@@ -1,0 +1,45 @@
+/* style.css */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body, html {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #1a1a1a;
+  color: #ffffff;
+  font-family: Arial, sans-serif;
+}
+
+.animation-container {
+  display: flex; /* Use flex to arrange letter boxes in a row */
+}
+
+.letter-box {
+  width: 80px; /* Fixed width for each letter box */
+  height: 80px; /* Fixed height for each letter box */
+  font-size: 6rem; /* Large font size */
+  font-weight: bold;
+  text-align: center;
+  display: flex;
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
+  margin: 0 5px; /* Space between boxes */
+  color: #CDC1FF;
+  border: 2px solid #ffdd57; /* Optional border for visibility */
+}
+
+#letter-segment-2 .letter-box {
+  width: 160px;
+  height: 160px;
+  font-size: 10rem;
+  color: #BFECFF;
+}
+
+#letter-segment-3 .letter-box {
+  color: #FFF6E3;
+}
