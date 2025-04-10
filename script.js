@@ -6,9 +6,6 @@ const Alphabet1 = "abcdefghijklmnopq"; // lowercase
 const Alphabet2 = "ABCDEFGHIJKLMNOPQRST"; // uppercase
 const Alphabet3 = "abcdefghijklmnopqrstuvw"; // lowercase
 const maxVisibleLength = 3; // Maximum letters to display
-let currentIndex1 = 0;
-let currentIndex2 = 0;
-let currentIndex3 = 0;
 
 // Create letter boxes and append them to the container
 function createLetterBoxes(letterSegment) {
@@ -20,32 +17,32 @@ function createLetterBoxes(letterSegment) {
   }
 }
 
-// Animate letters into the letter boxes
-function animateLetters(fullAlphabet, currentIndex, letterSegment, isUpperCase) {
+// Animate letters into the letter boxes using setInterval for cleaner logic
+function animateLettersOptimized(fullAlphabet, letterSegment, isUpperCase) {
   const letterBoxes = letterSegment.querySelectorAll(".letter-box");
+  let currentIndex = 0;
 
-  // Update each box with the corresponding letter
-  for (let i = 0; i < maxVisibleLength; i++) {
-    // Calculate the index in the fullAlphabet string
-    const alphabetIndex = currentIndex - (maxVisibleLength - 1 - i); // Fill from the rightmost box
+  const interval = setInterval(() => {
+    // Update each box with the corresponding letter
+    for (let i = 0; i < maxVisibleLength; i++) {
+      const alphabetIndex = currentIndex - (maxVisibleLength - 1 - i); // Fill from the rightmost box
 
-    // Fill boxes with letters if the index is within bounds
-    if (alphabetIndex >= 0 && alphabetIndex < fullAlphabet.length) {
-      letterBoxes[i].textContent = (alphabetIndex <= currentIndex) // Fill only if we are at or past the current index
-        ? (isUpperCase 
-          ? fullAlphabet[alphabetIndex].toUpperCase() 
-          : fullAlphabet[alphabetIndex].toLowerCase())  
-        : ""; // Keep the rest empty
-    } else {
-      letterBoxes[i].textContent = ""; // Clear if out of bounds
+      if (alphabetIndex >= 0 && alphabetIndex < fullAlphabet.length) {
+        letterBoxes[i].textContent = isUpperCase
+          ? fullAlphabet[alphabetIndex].toUpperCase()
+          : fullAlphabet[alphabetIndex].toLowerCase();
+      } else {
+        letterBoxes[i].textContent = ""; // Clear if out of bounds
+      }
     }
-  }
 
-  // Increment the index until we reach the end of the alphabet
-  if (currentIndex < fullAlphabet.length - 1) {
-    currentIndex++;
-    setTimeout(() => animateLetters(fullAlphabet, currentIndex, letterSegment, isUpperCase), 200);
-  }
+    // Increment the index or stop the animation if the end is reached
+    if (currentIndex < fullAlphabet.length - 1) {
+      currentIndex++;
+    } else {
+      clearInterval(interval); // Stop the animation
+    }
+  }, 100); // Faster animation with 100ms delay
 }
 
 // Initialize the letter boxes and start the animation
@@ -53,13 +50,11 @@ createLetterBoxes(letterSegment1);
 createLetterBoxes(letterSegment2);
 createLetterBoxes(letterSegment3);
 
-// Start the animation for Alphabet1 after a 1200ms delay
+// Start the animations
 setTimeout(() => {
-  animateLetters(Alphabet1, currentIndex1, letterSegment1, false); // Alphabet1: lowercase
-}, 1200);
-// Start the animation for Alphabet2 after a 600ms delay
-setTimeout(() => {
-  animateLetters(Alphabet2, currentIndex2, letterSegment2, true); // Alphabet2: uppercase
+  animateLettersOptimized(Alphabet1, letterSegment1, false); // Alphabet1: lowercase
 }, 600);
-// Start the animation for Alphabet3 instantly
-animateLetters(Alphabet3, currentIndex3, letterSegment3, false); // Alphabet3: lowercase
+setTimeout(() => {
+  animateLettersOptimized(Alphabet2, letterSegment2, true); // Alphabet2: uppercase
+}, 300);
+animateLettersOptimized(Alphabet3, letterSegment3, false); // Alphabet3: lowercase

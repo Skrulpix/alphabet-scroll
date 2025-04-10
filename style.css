@@ -1,4 +1,4 @@
-/* style.css */
+/* Reset and general styles */
 * {
   margin: 0;
   padding: 0;
@@ -10,36 +10,36 @@ body, html {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #1a1a1a;
+  background-color: #1a1a1a; /* Dark background for contrast */
   color: #ffffff;
-  font-family: Arial, sans-serif;
+  font-family: 'Poppins', sans-serif; /* Cool font */
 }
 
+/* Animation container */
 .animation-container {
-  display: flex; /* Use flex to arrange letter boxes in a row */
+  display: flex; /* Arrange letter boxes in a row */
+  justify-content: center;
+  align-items: center;
 }
 
+/* Letter box styling */
 .letter-box {
-  width: 80px; /* Fixed width for each letter box */
-  height: 80px; /* Fixed height for each letter box */
-  font-size: 6rem; /* Large font size */
+  font-size: 4rem; /* Large font size */
   font-weight: bold;
   text-align: center;
-  display: flex;
-  justify-content: center; /* Center horizontally */
-  align-items: center; /* Center vertically */
-  margin: 0 5px; /* Space between boxes */
-  color: #CDC1FF;
-  border: 2px solid #ffdd57; /* Optional border for visibility */
+  color: #CDC1FF; /* Light purple text color */
+  border: none; /* Remove yellow border */
+  background: none; /* Remove background */
+  margin: 0 10px; /* Add spacing between letters */
 }
 
+/* Segment-specific styles */
 #letter-segment-2 .letter-box {
-  width: 160px;
-  height: 160px;
-  font-size: 10rem;
-  color: #BFECFF;
+  font-size: 10rem; /* Slightly larger font size for segment 2 */
+  color: #BFECFF; /* Light blue text color */
 }
 
 #letter-segment-3 .letter-box {
-  color: #FFF6E3;
+  font-size: 4rem; /* Default font size */
+  color: #FFF6E3; /* Light cream text color */
 }
