@@ -6,30 +6,60 @@
 }
 
 body, html {
+  margin: 0;
+  padding: 0;
   height: 100%;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  justify-content: flex-start;
   align-items: center;
-  background-color: #1a1a1a; /* Dark background for contrast */
+  background-color: #1a1a1a;
   color: #ffffff;
-  font-family: 'Poppins', sans-serif; /* Cool font */
+  font-family: 'Poppins', sans-serif;
+  overflow: hidden;
+}
+
+.content {
+  display: none;
+  width: 100%;
+  height: 90%;
+  background-color: #444;
+  color: #fff;
+  padding: 20px;
+  text-align: center;
+  overflow: auto;
+}
+
+.content.show {
+  display: block;
+}
+
+.letter-box.shrink {
+  height: 10%;
 }
 
 /* Animation container */
 .animation-container {
-  display: flex; /* Arrange letter boxes in a row */
+  width: 100%;
+  height: 100%;
+  display: flex;
   justify-content: center;
   align-items: center;
+  background-color: #333;
+  transition: height 1s ease;
 }
 
-/* Letter box styling */
-.letter-box {
-  font-size: 4rem; /* Large font size */
+.animation-container.header {
+  flex-direction: row; /* Ensure letters are in a row */
+}
+
+#letter-segment-1, #letter-segment-2, #letter-segment-3 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 4rem;
   font-weight: bold;
-  text-align: center;
   color: #CDC1FF; /* Light purple text color */
-  border: none; /* Remove yellow border */
-  background: none; /* Remove background */
   margin: 0 10px; /* Add spacing between letters */
 }
 
@@ -42,4 +72,8 @@ body, html {
 #letter-segment-3 .letter-box {
   font-size: 4rem; /* Default font size */
   color: #FFF6E3; /* Light cream text color */
+}
+
+.animation-container.shrink {
+  height: 10%;
 }

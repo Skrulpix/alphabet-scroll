@@ -58,3 +58,15 @@ setTimeout(() => {
   animateLettersOptimized(Alphabet2, letterSegment2, true); // Alphabet2: uppercase
 }, 300);
 animateLettersOptimized(Alphabet3, letterSegment3, false); // Alphabet3: lowercase
+
+
+document.addEventListener("DOMContentLoaded", () => {
+  const header = document.getElementById("header");
+  const content = document.getElementById("content");
+
+  // Trigger the animation after 2 seconds
+  setTimeout(() => {
+    header.classList.add("shrink");
+    content.classList.add("show");
+  }, 3600);
+});
